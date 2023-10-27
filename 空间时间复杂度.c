@@ -1,36 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include<stdio.h>
 
-//int main()
-//{
-//    int ar[3] = { 3,0,1 };
-//    int i = 0;
 //
-//    for (i = 0; i < 4; i++)
-//    {
-//        int left = 0;
-//        int right = 2;
-//
-//        while (left < right)
-//        {
-//            int mid = (left + right) / 2;
-//            if (ar[mid] > i)
-//            {
-//                right = mid - 1;
-//            }
-//            else if (ar[mid] < i)
-//            {
-//                left = mid + 1;
-//            }
-//            else
-//            {
-//                break;
-//            }
-//        }
-//  
-//    }
-//    return 0;
-//}
 //void rotate(int* nums, int numsSize, int k)
 //{
 //    int i = 0;
