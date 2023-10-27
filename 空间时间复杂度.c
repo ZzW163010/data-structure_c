@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include<stdio.h>
 
-//
+//找出一个已有数列中的缺失值
+
 //void rotate(int* nums, int numsSize, int k)
 //{
 //    int i = 0;
@@ -26,6 +27,8 @@
 //
 //    return 0;
 //}
+
+//找出一个数列中两个不重复值
 
 int main()
 {
