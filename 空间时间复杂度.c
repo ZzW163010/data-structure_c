@@ -66,3 +66,50 @@ int main()
 
 	return 0;
 }
+
+//轮转数组
+
+void reserve(int * nums,int left, int right)
+{
+   while(left <right)
+   {
+      int tmp = nums[left];
+      nums[left] = nums[right];
+      nums[right] = tmp;
+      left++;
+      right--;
+    }
+}
+void rotate(int* nums, int numsSize, int k)
+{
+    if(k>numsSize)
+    {
+        k %= numsSize;
+    }
+    reserve(nums,0, numsSize - k - 1);
+    reserve(nums,numsSize - k, numsSize - 1);
+    reserve(nums,0, numsSize - 1);
+
+//k>numsSize的处理方式
+//第一种
+//    if(numsSize >= k)
+//     {
+//        reserve(nums,0, numsSize - k - 1);
+//        reserve(nums,numsSize - k, numsSize - 1);
+//        reserve(nums,0, numsSize - 1);
+//     }
+//    else
+//     {
+//        while(k--)
+//         {
+//           int tmp = nums[numsSize - 1];
+//           int i = 0;
+//           for(i = 0;i < numsSize - 1; i++)
+//           {
+//              nums[numsSize - 1 - i] = nums[numsSize - 2 - i];
+//           }  
+//           nums[0] = tmp;
+//         }
+//     }
+
+}
