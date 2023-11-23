@@ -77,3 +77,79 @@ int* postorderTraversal(struct TreeNode* root, int* returnSize) {
 
     return a;
 }
+
+//二叉树的最大深度
+
+int maxDepth(struct TreeNode* root) {
+    if(root == NULL){
+        return 0;
+    }
+    int leftdata = maxDepth(root->left);
+    int rightdata = maxDepth(root->right);
+
+    return leftdata > rightdata ? leftdata + 1 : rightdata + 1;
+}
+
+//判断是否为平衡二叉树
+
+int depath(struct TreeNode* root){
+    if(root == NULL)
+        return 0;
+
+    int leftdata = depath(root->left);
+    int rightdata = depath(root->right);
+
+    return leftdata > rightdata ? leftdata + 1 : rightdata + 1;
+}
+bool isBalanced(struct TreeNode* root) {
+    if(root == NULL)
+        return true;
+
+    int leftdepath = depath(root->left);
+    int rightdepath = depath(root->right);
+
+    return abs(leftdepath - rightdepath) < 2 && isBalanced(root->left) && isBalanced(root->right);
+}
+
+//生成遍历二叉树
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct TreeNode {
+    struct TreeNode* left;
+    struct TreeNode* right;
+    char val;
+}BT;
+
+BT* CreatTree(char* pstr, int* i) {
+    if (pstr[*i] == '#') {
+        (*i)++;
+        return NULL;
+    }
+        
+    BT* root = (BT*)malloc(sizeof(BT));
+    assert(root);
+    root->val = pstr[*i];
+    (*i)++;
+    root->left = CreatTree(pstr, i);
+    root->right = CreatTree(pstr, i);
+    return root;
+}
+
+void InOrder(BT* root) {
+    if (root == NULL)
+        return;
+    InOrder(root->left);
+    printf("%c ", root->val);
+    InOrder(root->right);
+
+}
+int main() {
+    char str[100];
+    scanf("%s", str);
+    int i = 0;
+    BT* tree = CreatTree(str, &i);
+    InOrder(tree);
+    return 0;
+}
