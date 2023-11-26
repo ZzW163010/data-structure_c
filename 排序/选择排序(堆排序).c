@@ -46,7 +46,12 @@ void SelectSort(int* a, int n)
 				mx = i;
 			}
 		}
+		
 		Swap(&a[begin], &a[mi]);
+		if(begin == mx)
+		{
+		   mx = mi;
+		}
 		Swap(&a[end], &a[mx]);
 		end--;
 		begin++;
