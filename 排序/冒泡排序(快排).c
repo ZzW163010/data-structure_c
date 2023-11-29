@@ -19,29 +19,57 @@ void BubbleSort(int* a, int n)
 	}
 }
 
-//挖坑法
-void privot(int* a, int n)
+void BubbleSort(int* a, int n)
 {
-	int begin = 0;
-	int end = n - 1;
-	int p = 0;
-	int k = a[0];
-
-	while (begin < end)
+	for (int i = 0; i < n - 1; i++)
 	{
-		while (begin < end && a[end] >= k)
+		int flag = 1;  
+		 
+		for (int j = 0; j < n - 1 - i; j++)
 		{
-			end--;
+			if (a[j] > a[j + 1])
+			{
+				Swap(&a[j], &a[j + 1]);
+				flag = 0;
+			}
 		}
-		a[p] = a[end];
-		p = end;
-		
-		while (begin < end && a[begin] <= k)
+		if (flag == 1)
 		{
-			begin++;
+			break;
 		}
-		a[p] = a[begin];
-		p = begin;
 	}
-	a[p] = k;
+}
+
+void QuickSort(int* a, int left, int right)
+{
+	int begin = left;
+	int end = right;
+	int p = begin;
+	int k = a[begin];
+	
+	if (left >= right)
+	{
+		return;
+	}
+	else
+	{
+		while (begin < end)
+		{
+			while (begin < end && a[end] >= k)
+			{
+				end--;
+			}
+			a[p] = a[end];
+			p = end;
+			while (begin < end && a[begin] <= a[p])
+			{
+				begin++;
+			}
+			a[p] = a[begin];
+			p = begin;
+		}
+		a[p] = k;
+	}
+	QuickSort(a, left, p - 1);
+	QuickSort(a, p + 1, right);
 }
